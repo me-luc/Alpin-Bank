@@ -6,8 +6,6 @@ import java.util.ArrayList;
 public class User {
 	
 	//USER DATA
-	private String cardNumber;
-	private String accountNumber;
 	private String password; 
 	private String name;
 	private String gender;
@@ -21,18 +19,7 @@ public class User {
 	private String postcode;
 	private int number;
 	
-	//USER BANK ACCOUNT INFO
-	private double savings = 0;
-	ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-	
-	
 	//GETTERS AND SETTERS
-	public String getCardNumber() {
-		return cardNumber;
-	}
-	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -104,11 +91,5 @@ public class User {
 	}
 	public void setNumber(int number) {
 		this.number = number;
-	}
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
 	}
 }

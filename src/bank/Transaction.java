@@ -19,9 +19,7 @@ public class Transaction {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Transaction newDeposit() {
-		return null;
+	public void newDeposit() {
 	}
-	
 	
 }

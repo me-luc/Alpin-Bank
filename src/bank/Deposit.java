@@ -6,6 +6,7 @@ public class Deposit extends Transaction {
 		setTransactionType("Deposit");
 	}
 	
+	@Override
 	public void newDeposit() {
 		
 	}

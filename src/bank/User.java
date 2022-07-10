@@ -9,8 +9,8 @@ public class User {
 	private String cardNumber;
 	private String accountNumber;
 	private String password; 
-	public String name;
-	public String gender;
+	private String name;
+	private String gender;
 	private String id;
 	private String phone;
 	private String email;
@@ -23,7 +23,7 @@ public class User {
 	
 	//USER BANK ACCOUNT INFO
 	private double savings = 0;
-	ArrayList<Transaction> myTransactions = new ArrayList<Transaction>();
+	ArrayList<Transaction> transactions = new ArrayList<Transaction>();
 	
 	
 	//GETTERS AND SETTERS
@@ -109,7 +109,6 @@ public class User {
 		return accountNumber;
 	}
 	public void setAccountNumber(String accountNumber) {
-		myTransactions.add(new Deposit());
 		this.accountNumber = accountNumber;
 	}
 }

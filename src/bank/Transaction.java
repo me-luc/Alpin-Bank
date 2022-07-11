@@ -26,7 +26,7 @@ public class Transaction {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public void makeTransaction(Bank bank, double value) {
+	public void makeTransaction(BankAccount bank, double value) {
 	}
 	public double getValue() {
 		return value;

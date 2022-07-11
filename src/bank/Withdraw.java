@@ -6,7 +6,7 @@ public class Withdraw extends Transaction {
 		setTransactionType("Withdraw");
 	}
 	@Override
-	public void makeTransaction(Bank bank, double value) {
+	public void makeTransaction(BankAccount bank, double value) {
 		bank.setTotal(bank.getTotal()-value);
 	}
 }

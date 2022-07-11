@@ -8,7 +8,7 @@ public class Deposit extends Transaction {
 		setValue(value);
 	}
 	@Override
-	public void makeTransaction(Bank bank, double value) {
+	public void makeTransaction(BankAccount bank, double value) {
 		bank.setTotal(bank.getTotal()+value);
 	}
 }

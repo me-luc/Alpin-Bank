@@ -5,7 +5,7 @@ public class Loan extends Transaction {
 		setTransactionType("Loan");
 	}
 	@Override
-	public void makeTransaction(Bank bank, double value) {
+	public void makeTransaction(BankAccount bank, double value) {
 		
 	}
 }

@@ -8,7 +8,7 @@ public class User {
 	//USER DATA
 	private String password; 
 	private String name;
-	private String gender;
+	private char gender;
 	private String id;
 	private String phone;
 	private String email;
@@ -18,10 +18,14 @@ public class User {
 	private String town;
 	private String postcode;
 	private int number;
+	private BankAccount bankAccount = new BankAccount();
 	
 	//GETTERS AND SETTERS
 	public String getPassword() {
 		return password;
+	}
+	public boolean validatePassword(String password) {
+		return (this.password==password);
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -32,10 +36,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGender() {
+	public char getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
 	public String getId() {

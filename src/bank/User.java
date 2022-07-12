@@ -21,7 +21,7 @@ public class User {
 	private BankAccount bankAccount = new BankAccount();
 	
 	//GETTERS AND SETTERS
-	public String getPassword() {
+	private String getPassword() {
 		return password;
 	}
 	public boolean validatePassword(String password) {

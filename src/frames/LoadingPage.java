@@ -10,6 +10,7 @@ import java.awt.RenderingHints;
 import java.awt.desktop.ScreenSleepEvent;
 import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -21,14 +22,17 @@ import resources.FrameColors;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 
 public class LoadingPage extends JFrame {
 	FrameColors frameColors = new FrameColors();
 	static JPanel gradientPanel = new GradientPanel();
 	private JTextField title;
 	private static JTextField txtPctgLoading;
+	private JProgressBar progressBar;
 	
-	public LoadingPage() {
+	public LoadingPage(JFrame jFrame) {
 		setTitle("Apil Bank");
         getContentPane();
         setSize(1440,1024);
@@ -56,6 +60,7 @@ public class LoadingPage extends JFrame {
         
         //LOADING PERCENTAGE TEXT
         txtPctgLoading = new JTextField();
+        txtPctgLoading.setHorizontalAlignment(SwingConstants.CENTER);
         txtPctgLoading.setText("");
         txtPctgLoading.setForeground(frameColors.white);
         txtPctgLoading.setFont(new Font("Moulpali Regular", Font.PLAIN, 25));
@@ -66,35 +71,37 @@ public class LoadingPage extends JFrame {
         gradientPanel.add(txtPctgLoading);
         txtPctgLoading.setColumns(10);
         
+        progressBar = new JProgressBar();
+        progressBar.setForeground(frameColors.lightpink);
+        progressBar.setBounds(467, 437, 491, 14);
+        progressBar.setOpaque(false);
+        gradientPanel.add(progressBar);
         
-	}
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new LoadingPage();
-                frame.setVisible(true);
-              //LOADING
-                int progress = 0;
-                while (progress<=100) {
-        			Random random = new Random();
-        			txtPctgLoading.setText(progress + "%");
-        			frame.repaint();
-        			System.out.println(progress);
-        			Timer timer = new Timer();
+        //LOADING THE BAR
+        new Thread() {
+        	public void run() {
+        		int progress=0;
+        		Random random = new Random();
+        		while(progress<=100) {
         			try {
-						timer.wait(500);
+						sleep(100);
+						progressBar.setValue(progress);
+						txtPctgLoading.setText(progress + "%");
+						System.out.println(progress);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
         			if(progress<90) {
-        				progress +=  random.nextInt(15);
+        				progress += random.nextInt(8);
         			} else {
-        				progress += 2;
+        				progress++;
+        			}
+        			if(progress==100) {
+        				dispose();
+        				jFrame.setVisible(true);
         			}
         		}
-            }
-        });
-    }
+        	}
+        }.start();
+	}
 }

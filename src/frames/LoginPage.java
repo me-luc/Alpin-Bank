@@ -1,11 +1,13 @@
 package frames;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.Shape;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +22,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;
 
 public class LoginPage extends JFrame {
@@ -27,10 +30,10 @@ public class LoginPage extends JFrame {
 	private JTextField txtTitle;
 	private JTextField txtForgotPassword;
 	private JTextField txtCreateAccount;
-	private JButton btnSignIn;
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private FrameColors frameColors = new FrameColors();
+	private JButton btnSignIn;
 	/**
 	 * Launch the application.
 	 */
@@ -47,13 +50,6 @@ public class LoginPage extends JFrame {
 	}
 
 	public LoginPage() {
-		
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e1) {
-			e1.printStackTrace();
-		}
 		
 		setResizable(false);
 		setTitle("Apil Bank");
@@ -86,15 +82,6 @@ public class LoginPage extends JFrame {
         txtCreateAccount.setBounds(602, 707, 96, 19);
         gradientPanel.add(txtCreateAccount);
         
-        btnSignIn = new JButton("Sign in");
-        btnSignIn.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        btnSignIn.setBounds(589, 586, 159, 55);
-        btnSignIn.setOpaque(false);
-        gradientPanel.add(btnSignIn);
-        
         passwordField = new JPasswordField();
         passwordField.setBounds(471, 477, 385, 80);
         gradientPanel.add(passwordField);
@@ -103,5 +90,21 @@ public class LoginPage extends JFrame {
         textField.setBounds(471, 367, 385, 80);
         gradientPanel.add(textField);
         textField.setColumns(10);
+        
+        RoundedButton btnSignIn = new RoundedButton();
+        btnSignIn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        btnSignIn.setFont(new Font("Montserrat", Font.BOLD, 25));
+        btnSignIn.setBorderColor(frameColors.lightpink);
+        btnSignIn.setText("Sign in");
+        btnSignIn.setRadius(50);
+        btnSignIn.setBackground(frameColors.lightpink);
+        btnSignIn.setBounds(602, 586, 159, 55);
+        
+        
+        gradientPanel.add(btnSignIn);
+        
 	}
 }

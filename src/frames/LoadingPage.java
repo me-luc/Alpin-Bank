@@ -38,7 +38,7 @@ public class LoadingPage extends JFrame {
         setSize(1440,1024);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().add(gradientPanel);
+        getContentPane().add(gradientPanel, BorderLayout.CENTER);
         gradientPanel.setLayout(null);
         
         JPanel loadingRect = new JPanel();

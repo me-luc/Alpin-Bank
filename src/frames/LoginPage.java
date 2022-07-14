@@ -13,17 +13,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import resources.FrameColors;
 
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class LoginPage extends JFrame {
 	static JPanel gradientPanel = new GradientPanel();
@@ -86,7 +89,11 @@ public class LoginPage extends JFrame {
         passwordField.setBounds(520, 477, 385, 80);
         gradientPanel.add(passwordField);
         
-        textField = new JTextField();
+        Border roundedBorder = new LineBorder(Color.green, 5, true); // the third parameter - true, says it's round
+        
+        
+        RoundedText textField = new RoundedText(60);
+        textField.setBorder( BorderFactory.createCompoundBorder( new RoundedBorder(), textField.getBorder() ) );
         textField.setBounds(520, 367, 385, 80);
         gradientPanel.add(textField);
         textField.setColumns(10);

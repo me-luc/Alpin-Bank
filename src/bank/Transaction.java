@@ -1,32 +1,24 @@
 package bank;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class Transaction {
+	private String discription;
 	private String transactionType;
-	private Date date;
 	private double value;
-	private String id;
+	private Date date;
 	
+	public String getDiscription() {
+		return discription;
+	}
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
 	public String getTransactionType() {
 		return transactionType;
 	}
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
-	}
-	public Date getDate() {
-		return this.date;
-	}
-	public Date getCurrentDate() {
-		Date date = new Date(System.currentTimeMillis());
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public void makeTransaction(BankAccount bank, double value) {
 	}
 	public double getValue() {
 		return value;
@@ -34,11 +26,11 @@ public class Transaction {
 	public void setValue(double value) {
 		this.value = value;
 	}
-	public String getId() {
-		return id;
+	public Date getDate() {
+		return date;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 }

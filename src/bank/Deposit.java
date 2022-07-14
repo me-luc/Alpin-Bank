@@ -2,13 +2,12 @@ package bank;
 
 public class Deposit extends Transaction {
 	
-	public Deposit(double value) {
-		setTransactionType("Deposit");
-		setDate(getCurrentDate());
+	private Deposit(double value) {
 		setValue(value);
+		setTransactionType(getTransactionType());
 	}
-	@Override
-	public void makeTransaction(BankAccount bank, double value) {
-		bank.setTotal(bank.getTotal()+value);
+	
+	public void makeDeposit() {
+		
 	}
 }

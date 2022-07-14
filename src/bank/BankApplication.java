@@ -1,16 +1,8 @@
 package bank;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
 import java.util.Scanner;
-
-import javax.management.loading.PrivateClassLoader;
-
 
 public class BankApplication {
 	
@@ -115,6 +107,7 @@ public class BankApplication {
 
 
 
+	@SuppressWarnings("deprecation")
 	public static void definedUsers() {
 		User user1, user2, user3;
 		//MARK

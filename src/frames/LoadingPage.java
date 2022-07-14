@@ -2,22 +2,9 @@ package frames;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.desktop.ScreenSleepEvent;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
-
 import resources.FrameColors;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -26,7 +13,10 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
 public class LoadingPage extends JFrame {
-	FrameColors frameColors = new FrameColors();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static JPanel gradientPanel = new GradientPanel();
 	private JTextField title;
 	private static JTextField txtPctgLoading;
@@ -48,7 +38,7 @@ public class LoadingPage extends JFrame {
         gradientPanel.add(loadingRect);
         
         title = new JTextField();
-        title.setForeground(frameColors.darkpink);
+        title.setForeground(FrameColors.darkpink);
         title.setFont(new Font("Moulpali Regular", Font.PLAIN, 100));
         title.setText("Alpin");
         title.setEditable(false);
@@ -62,7 +52,7 @@ public class LoadingPage extends JFrame {
         txtPctgLoading = new JTextField();
         txtPctgLoading.setHorizontalAlignment(SwingConstants.CENTER);
         txtPctgLoading.setText("");
-        txtPctgLoading.setForeground(frameColors.white);
+        txtPctgLoading.setForeground(FrameColors.white);
         txtPctgLoading.setFont(new Font("Moulpali Regular", Font.PLAIN, 25));
         txtPctgLoading.setEditable(false);
         txtPctgLoading.setOpaque(false);
@@ -72,7 +62,7 @@ public class LoadingPage extends JFrame {
         txtPctgLoading.setColumns(10);
         
         progressBar = new JProgressBar();
-        progressBar.setForeground(frameColors.lightpink);
+        progressBar.setForeground(FrameColors.lightpink);
         progressBar.setBounds(467, 437, 491, 14);
         progressBar.setOpaque(false);
         gradientPanel.add(progressBar);

@@ -68,26 +68,26 @@ public class LoginPage extends JFrame {
         txtTitle.setOpaque(false);
         txtTitle.setEditable(false);
         txtTitle.setBorder(null);
-        txtTitle.setBounds(546, 244, 182, 102);
+        txtTitle.setBounds(622, 244, 182, 102);
         gradientPanel.add(txtTitle);
         txtTitle.setColumns(10);
         
         txtForgotPassword = new JTextField();
-        txtForgotPassword.setBounds(602, 671, 96, 19);
+        txtForgotPassword.setBounds(665, 671, 96, 19);
         gradientPanel.add(txtForgotPassword);
         txtForgotPassword.setColumns(10);
         
         txtCreateAccount = new JTextField();
         txtCreateAccount.setColumns(10);
-        txtCreateAccount.setBounds(602, 707, 96, 19);
+        txtCreateAccount.setBounds(665, 707, 96, 19);
         gradientPanel.add(txtCreateAccount);
         
         passwordField = new JPasswordField();
-        passwordField.setBounds(471, 477, 385, 80);
+        passwordField.setBounds(520, 477, 385, 80);
         gradientPanel.add(passwordField);
         
         textField = new JTextField();
-        textField.setBounds(471, 367, 385, 80);
+        textField.setBounds(520, 367, 385, 80);
         gradientPanel.add(textField);
         textField.setColumns(10);
         
@@ -101,8 +101,7 @@ public class LoginPage extends JFrame {
         btnSignIn.setText("Sign in");
         btnSignIn.setRadius(50);
         btnSignIn.setBackground(frameColors.lightpink);
-        btnSignIn.setBounds(602, 586, 159, 55);
-        
+        btnSignIn.setBounds(633, 586, 159, 55);
         
         gradientPanel.add(btnSignIn);
         

@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.Shape;
 
@@ -27,16 +28,18 @@ import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class LoginPage extends JFrame {
 	static JPanel gradientPanel = new GradientPanel();
 	private JTextField txtTitle;
-	private JTextField txtForgotPassword;
-	private JTextField txtCreateAccount;
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private FrameColors frameColors = new FrameColors();
 	private JButton btnSignIn;
+	private JTextField username;
 	/**
 	 * Launch the application.
 	 */
@@ -54,6 +57,7 @@ public class LoginPage extends JFrame {
 
 	public LoginPage() {
 		
+		//GENERAL PAGE SETTINGS
 		setResizable(false);
 		setTitle("Apil Bank");
         getContentPane();
@@ -63,6 +67,7 @@ public class LoginPage extends JFrame {
         getContentPane().add(gradientPanel);
         gradientPanel.setLayout(null);
         
+        //TITLE FIELD
         txtTitle = new JTextField();
         txtTitle.setText("Apil");
         txtTitle.setForeground(frameColors.darkpink);
@@ -75,42 +80,68 @@ public class LoginPage extends JFrame {
         gradientPanel.add(txtTitle);
         txtTitle.setColumns(10);
         
-        txtForgotPassword = new JTextField();
-        txtForgotPassword.setBounds(665, 671, 96, 19);
-        gradientPanel.add(txtForgotPassword);
-        txtForgotPassword.setColumns(10);
-        
-        txtCreateAccount = new JTextField();
-        txtCreateAccount.setColumns(10);
-        txtCreateAccount.setBounds(665, 707, 96, 19);
-        gradientPanel.add(txtCreateAccount);
-        
-        passwordField = new JPasswordField();
+        //PASSWORD FIELD
+        passwordField = new JPasswordField("●●●●●●●●"){
+			  @Override 
+			  protected void paintComponent(Graphics g) {
+			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
+			      Graphics2D g2 = (Graphics2D) g.create();
+			      g2.setPaint(getBackground());
+			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
+			          0, 0, getWidth() - 1, getHeight() - 1));
+			      g2.dispose();
+			    }
+			    super.paintComponent(g);
+			  }
+			  @Override 
+			  public void updateUI() {
+			    super.updateUI();
+			    setOpaque(false);
+			    setBorder(new RoundedCornerBorder());
+			  }
+			};
+        passwordField.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		passwordField.setText("");
+        	}
+        });
+        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        passwordField.setHorizontalAlignment(SwingConstants.CENTER);
+        passwordField.setToolTipText("");
         passwordField.setBounds(520, 477, 385, 80);
         gradientPanel.add(passwordField);
+        
+        //USERNAME JTEXTFIELD
+        username = new JTextField(){
+			  @Override 
+			  protected void paintComponent(Graphics g) {
+			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
+			      Graphics2D g2 = (Graphics2D) g.create();
+			      g2.setPaint(getBackground());
+			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
+			          0, 0, getWidth() - 1, getHeight() - 1));
+			      g2.dispose();
+			    }
+			    super.paintComponent(g);
+			  }
+			  @Override 
+			  public void updateUI() {
+			    super.updateUI();
+			    setOpaque(false);
+			    setBorder(new RoundedCornerBorder());
+			  }
+			};
+        username.setBounds(520, 373, 385, 80);
+        gradientPanel.add(username);
+        username.setColumns(10);
+    
         
         Border roundedBorder = new LineBorder(Color.green, 5, true); // the third parameter - true, says it's round
         
         
-        RoundedText textField = new RoundedText(60);
-        textField.setBorder( BorderFactory.createCompoundBorder( new RoundedBorder(), textField.getBorder() ) );
-        textField.setBounds(520, 367, 385, 80);
-        gradientPanel.add(textField);
-        textField.setColumns(10);
         
-        RoundedButton btnSignIn = new RoundedButton();
-        btnSignIn.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        btnSignIn.setFont(new Font("Montserrat", Font.BOLD, 25));
-        btnSignIn.setBorderColor(frameColors.lightpink);
-        btnSignIn.setText("Sign in");
-        btnSignIn.setRadius(50);
-        btnSignIn.setBackground(frameColors.lightpink);
-        btnSignIn.setBounds(633, 586, 159, 55);
-        
-        gradientPanel.add(btnSignIn);
+  
         
 	}
 }

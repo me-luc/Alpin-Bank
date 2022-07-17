@@ -16,6 +16,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import elements.RoundedButton;
+import elements.RoundedCornerBorder;
 import resources.FrameColors;
 
 import javax.swing.JTextField;
@@ -40,6 +42,7 @@ public class LoginPage extends JFrame {
 	private FrameColors frameColors = new FrameColors();
 	private JButton btnSignIn;
 	private JTextField username;
+	private RoundedButton btnNewButton;
 	/**
 	 * Launch the application.
 	 */
@@ -64,6 +67,7 @@ public class LoginPage extends JFrame {
         setSize(1440,1024);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gradientPanel.setBackground(Color.ORANGE);
         getContentPane().add(gradientPanel);
         gradientPanel.setLayout(null);
         
@@ -135,13 +139,17 @@ public class LoginPage extends JFrame {
         username.setBounds(520, 373, 385, 80);
         gradientPanel.add(username);
         username.setColumns(10);
-    
         
-        Border roundedBorder = new LineBorder(Color.green, 5, true); // the third parameter - true, says it's round
-        
-        
-        
-  
+        btnNewButton = new RoundedButton();
+        btnNewButton.setBounds(600, 632, 153, 57);
+        btnNewButton.setText("teste");
+        ((RoundedButton) btnNewButton).setRadius(50);
+        btnNewButton.setBorder(null);
+        btnNewButton.setBorderColor(frameColors.lightpink);
+        btnNewButton.setColor(frameColors.lightpink);
+        btnNewButton.setColorClick(frameColors.lightgray);
+        btnNewButton.setColorOver(frameColors.darkpink);
+        gradientPanel.add(btnNewButton);
         
 	}
 }

@@ -1,4 +1,4 @@
-package frames;
+package elements;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -13,7 +13,7 @@ import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.border.AbstractBorder;
 
-class RoundedCornerBorder extends AbstractBorder {
+public class RoundedCornerBorder extends AbstractBorder {
 	
 	  private static final Color ALPHA_ZERO = new Color(0x0, true);
 	  

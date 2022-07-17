@@ -1,4 +1,4 @@
-package frames;
+package elements;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -75,12 +75,14 @@ public class RoundedButton extends JButton {
             @Override
             public void mouseEntered(MouseEvent me) {
                 setBackground(colorOver);
+                setBorderColor(colorOver);
                 over = true;
             }
 
             @Override
             public void mouseExited(MouseEvent me) {
                 setBackground(color);
+                setBorderColor(borderColor);
                 over = false;
 
             }

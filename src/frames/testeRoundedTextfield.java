@@ -18,9 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
+
+import elements.RoundedCornerBorder;
+
 import javax.swing.SwingConstants;
 
-public class teste extends JFrame {
+public class testeRoundedTextfield extends JFrame {
 
 	private JPanel contentPane;
 
@@ -31,7 +34,7 @@ public class teste extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					teste frame = new teste();
+					testeRoundedTextfield frame = new testeRoundedTextfield();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +46,7 @@ public class teste extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public teste() {
+	public testeRoundedTextfield() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

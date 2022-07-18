@@ -1,4 +1,4 @@
-package frames;
+package elements;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import resources.FrameColors;
 
-class GradientPanel extends JPanel {
+public class GradientPanel extends JPanel {
 	FrameColors frameColors = new FrameColors();
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2D = (Graphics2D) g;

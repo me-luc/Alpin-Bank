@@ -9,6 +9,9 @@ import resources.FrameColors;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
+import elements.GradientPanel;
+
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 

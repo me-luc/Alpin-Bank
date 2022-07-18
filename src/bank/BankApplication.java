@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import frames.LoadingPage;
 import frames.LoginPage;
+import frames.MainMenu;
 
 public class BankApplication {
 	
@@ -42,21 +43,27 @@ public class BankApplication {
 		loginPage.btnSignIn.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		//CHECK IF USER EXISTS
-        		User validationUser = getUser(loginPage.username.getText(), users);
-        		System.out.println(validationUser.getName());
-        		if(validationUser != null) {
-        			//VALIDATE PASSWORD
-        			String password = new String(loginPage.passwordField.getPassword());
-        			if(validationUser.validatePassword(password)) {
-        				JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFUL");
-        			} else {
-        				JOptionPane.showMessageDialog(null, "WRONG PASSWORD");
-        			}
-        		} else {
-        			JOptionPane.showMessageDialog(null, "User does not exist");
+        		User user = getUser(loginPage.username.getText(), users);
+        		String password = new String(loginPage.passwordField.getPassword());
+        		if(login(user, password)) {
+        			new MainMenu(user).setVisible(true);
         		}
         	}
         });
+	}
+	
+	private static boolean login(User user, String password) {
+		//CHECKING IF USER EXISTS
+		if(user == null) {
+			JOptionPane.showMessageDialog(null, "User does not exist");
+			return false;
+		} 
+		//CHECKING IF PASSWORD IS VALID
+		if(!user.validatePassword(password)) { 
+			JOptionPane.showMessageDialog(null, "Wrong password, try again");
+			return false;
+		}
+		return true;
 	}
 	
 	//CREATE USER

@@ -67,7 +67,7 @@ public class MainMenu extends JFrame {
         pages.add(functions, "functions");
         
         JPanel deposit = new JPanel();
-        pages.add(deposit, "deposit");
+        pages.add(new DepositFrame(), "deposit");
         
         JPanel loan = new JPanel();
         pages.add(loan, "loan");

@@ -37,12 +37,10 @@ import javax.swing.SwingConstants;
 public class LoginPage extends JFrame {
 	static JPanel gradientPanel = new GradientPanel();
 	private JTextField txtTitle;
-	private JPasswordField passwordField;
-	private JTextField textField;
+	public JPasswordField passwordField;
 	private FrameColors frameColors = new FrameColors();
-	private JButton btnSignIn;
-	private JTextField username;
-	private RoundedButton btnNewButton;
+	public JTextField username;
+	public RoundedButton btnSignIn;
 	/**
 	 * Launch the application.
 	 */
@@ -73,6 +71,7 @@ public class LoginPage extends JFrame {
         
         //TITLE FIELD
         txtTitle = new JTextField();
+        txtTitle.setHorizontalAlignment(SwingConstants.CENTER);
         txtTitle.setText("Apil");
         txtTitle.setForeground(frameColors.darkpink);
         txtTitle.setFont(new Font("Moulpali Regular", Font.PLAIN, 80));
@@ -80,7 +79,7 @@ public class LoginPage extends JFrame {
         txtTitle.setOpaque(false);
         txtTitle.setEditable(false);
         txtTitle.setBorder(null);
-        txtTitle.setBounds(622, 244, 182, 102);
+        txtTitle.setBounds(623, 191, 182, 102);
         gradientPanel.add(txtTitle);
         txtTitle.setColumns(10);
         
@@ -104,20 +103,22 @@ public class LoginPage extends JFrame {
 			    setBorder(new RoundedCornerBorder());
 			  }
 			};
+        passwordField.setForeground(frameColors.brown);
+        passwordField.setBackground(frameColors.lightgray);
         passwordField.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		passwordField.setText("");
         	}
         });
-        passwordField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        passwordField.setFont(new Font("Montserrat", Font.PLAIN, 20));
         passwordField.setHorizontalAlignment(SwingConstants.CENTER);
         passwordField.setToolTipText("");
-        passwordField.setBounds(520, 477, 385, 80);
+        passwordField.setBounds(521, 424, 385, 80);
         gradientPanel.add(passwordField);
         
         //USERNAME JTEXTFIELD
-        username = new JTextField(){
+        username = new JTextField(30){
 			  @Override 
 			  protected void paintComponent(Graphics g) {
 			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
@@ -136,20 +137,32 @@ public class LoginPage extends JFrame {
 			    setBorder(new RoundedCornerBorder());
 			  }
 			};
-        username.setBounds(520, 373, 385, 80);
+        username.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		username.setText("");
+        	}
+        });
+        username.setForeground(frameColors.brown);
+        username.setHorizontalAlignment(SwingConstants.CENTER);
+        username.setText("Account number");
+        username.setBackground(frameColors.lightgray);
+        username.setFont(new Font("Montserrat", Font.PLAIN, 20));
+        username.setBounds(521, 320, 385, 80);
         gradientPanel.add(username);
         username.setColumns(10);
         
-        btnNewButton = new RoundedButton();
-        btnNewButton.setBounds(600, 632, 153, 57);
-        btnNewButton.setText("teste");
-        ((RoundedButton) btnNewButton).setRadius(50);
-        btnNewButton.setBorder(null);
-        btnNewButton.setBorderColor(frameColors.lightpink);
-        btnNewButton.setColor(frameColors.lightpink);
-        btnNewButton.setColorClick(frameColors.lightgray);
-        btnNewButton.setColorOver(frameColors.darkpink);
-        gradientPanel.add(btnNewButton);
+        btnSignIn = new RoundedButton();
+        btnSignIn.setFont(new Font("Montserrat", Font.BOLD, 25));
+        btnSignIn.setBounds(634, 545, 159, 55);
+        btnSignIn.setText("Sign in");
+        ((RoundedButton) btnSignIn).setRadius(50);
+        btnSignIn.setBorder(null);
+        btnSignIn.setBorderColor(frameColors.lightpink);
+        btnSignIn.setColor(frameColors.lightpink);
+        btnSignIn.setColorClick(frameColors.lightgray);
+        btnSignIn.setColorOver(frameColors.darkpink);
+        gradientPanel.add(btnSignIn);
         
 	}
 }

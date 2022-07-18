@@ -4,6 +4,7 @@ public class User {
 	private String name;
 	private String id;
 	private String password;
+	//login method is by account number
 	private String accountNumber;
 	private String email;
 	private String phone;
@@ -12,6 +13,9 @@ public class User {
 	//GETTERS AND SETTERS
 	public String getName() {
 		return name;
+	}
+	public boolean validatePassword(String password) {
+		return this.password.equals(password);
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -22,7 +26,7 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPassword() {
+	private String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {

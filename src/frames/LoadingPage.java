@@ -77,7 +77,6 @@ public class LoadingPage extends JFrame {
 						sleep(100);
 						progressBar.setValue(progress);
 						txtPctgLoading.setText(progress + "%");
-						System.out.println(progress);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

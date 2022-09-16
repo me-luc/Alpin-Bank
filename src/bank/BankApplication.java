@@ -39,7 +39,7 @@ public class BankApplication {
 		users.add(user1);
 		users.add(user2);
 		
-		//LOGIN
+		//LOGIN LOGIC
 		loginPage.btnSignIn.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		//CHECK IF USER EXISTS
@@ -50,6 +50,7 @@ public class BankApplication {
         		}
         	}
         });
+		//new MainMenu(user2).setVisible(true);
 	}
 	
 	private static boolean login(User user, String password) {

@@ -12,6 +12,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.Icon;
 
 import bank.BankAccount;
+import bank.BankApplication;
 import bank.User;
 
 import java.awt.CardLayout;
@@ -21,6 +22,7 @@ import java.awt.Label;
 
 import javax.swing.JToggleButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -29,14 +31,13 @@ import java.awt.ComponentOrientation;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainMenu extends JFrame {
-
-	public JLabel lblUser;
 
 	public MainMenu(User user) {
 		//GENERAL PAGE SETTINGS
@@ -51,52 +52,71 @@ public class MainMenu extends JFrame {
         menuPanel.setBounds(0, 0, 350, 912);
         menuPanel.setMaximumSize(new Dimension(1024, 1024));
         
-        JPanel header = new JPanel();
-        header.setBounds(350, 0, 1090, 194);
-        header.setBackground(FrameColors.lightgray);
-        
         JPanel pages = new JPanel();
-        pages.setBounds(350, 194, 1090, 830);
+        pages.setBounds(350, 0, 1090, 1024);
         pages.setBackground(Color.GREEN);
-        header.setLayout(null);
-        
-        lblUser = new JLabel();
-        lblUser.setForeground(FrameColors.darkpink);
-        lblUser.setFont(new Font("Moulpali", Font.PLAIN, 80));
-        lblUser.setBounds(50, 53, 846, 97);
-        lblUser.setText("Hi, " + user.getName());
-        header.add(lblUser);
         pages.setLayout(new CardLayout(0, 0));
         
         JPanel functions = new JPanel();
         pages.add(functions, "functions");
+        functions.setLayout(null);
+        
+        CardLayout c = (CardLayout) pages.getLayout();
+        
+        JLabel titleFunctions = new JLabel();
+        titleFunctions.setBounds(75, 5, 456, 177);
+        titleFunctions.setText("Hi, " + user.getName());
+        titleFunctions.setForeground(new Color(201, 149, 162));
+        titleFunctions.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        functions.add(titleFunctions);
         
         JPanel deposit = new JPanel();
-        DepositFrame depositFrame = new DepositFrame();
-        pages.add(depositFrame, "deposit");
         
         JPanel loan = new JPanel();
         pages.add(loan, "loan");
+        loan.setLayout(null);
+        
+        JLabel titleLoan = new JLabel();
+        titleLoan.setBounds(75, 5, 456, 177);
+        titleLoan.setText("titleLoan");
+        titleLoan.setForeground(new Color(201, 149, 162));
+        titleLoan.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        loan.add(titleLoan);
         
         JPanel transfer = new JPanel();
-        pages.add(transfer, "transfer");
+        pages.add(transfer, "name_435898407657800");
+        transfer.setLayout(null);
+        
+        JLabel titleTransfer = new JLabel();
+        titleTransfer.setBounds(75, 5, 456, 177);
+        titleTransfer.setText("Transfer");
+        titleTransfer.setForeground(new Color(201, 149, 162));
+        titleTransfer.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        transfer.add(titleTransfer);
         
         JPanel cheque = new JPanel();
         pages.add(cheque, "cheque");
+        cheque.setLayout(null);
+        
+        JLabel titleCheque = new JLabel();
+        titleCheque.setBounds(75, 5, 456, 177);
+        titleCheque.setText("Cheque");
+        titleCheque.setForeground(new Color(201, 149, 162));
+        titleCheque.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        cheque.add(titleCheque);
         
         JPanel withdraw = new JPanel();
         pages.add(withdraw, "withdraw");
+        withdraw.setLayout(null);
+        
+        JLabel titleWithdraw = new JLabel();
+        titleWithdraw.setBounds(75, 5, 292, 177);
+        titleWithdraw.setText("Withdraw");
+        titleWithdraw.setForeground(new Color(201, 149, 162));
+        titleWithdraw.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        withdraw.add(titleWithdraw);
         getContentPane().setLayout(null);
         getContentPane().add(menuPanel);
-        
-        JButton btnNewButton = new JButton("");
-        btnNewButton.setBounds(0, 1174, 350, 70);
-        btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        btnNewButton.setOpaque(false);
-        btnNewButton.setBorder(null);
         
         JLabel homeIcon = new JLabel("");
         homeIcon.setBounds(51, 91, 37, 45);
@@ -108,10 +128,61 @@ public class MainMenu extends JFrame {
         lblHome.setForeground(Color.WHITE);
         menuPanel.setLayout(null);
         
-        JLabel homeIcon_1 = new JLabel("");
-        homeIcon_1.setBounds(0, 1174, 88, 0);
-        menuPanel.add(homeIcon_1);
-        menuPanel.add(btnNewButton);
+        JPanel logoutButton = new JPanel();
+        logoutButton.addMouseListener(new MouseAdapter() {
+        	@SuppressWarnings("static-access")
+			@Override
+        	public void mouseClicked(MouseEvent e) {
+        		MainMenu.this.dispose();
+        	}
+        });
+        logoutButton.setBounds(31, 471, 213, 70);
+        logoutButton.setOpaque(false);
+        menuPanel.add(logoutButton);
+        
+        JPanel settingsButton = new JPanel();
+        settingsButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+				c.show(pages, "settings");
+        	}
+        });
+        settingsButton.setBounds(31, 372, 230, 70);
+        settingsButton.setOpaque(false);
+        menuPanel.add(settingsButton);
+        
+        JPanel historyButton = new JPanel();
+        historyButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+				c.show(pages, "history");
+        	}
+        });
+        historyButton.setBounds(31, 272, 213, 70);
+        historyButton.setOpaque(false);
+        menuPanel.add(historyButton);
+        
+        JPanel summaryButton = new JPanel();
+        summaryButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+				c.show(pages, "summary");
+        	}
+        });
+        summaryButton.setBounds(31, 177, 251, 70);
+        summaryButton.setOpaque(false);
+        menuPanel.add(summaryButton);
+        
+        JPanel homeButton = new JPanel();
+        homeButton.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+				c.show(pages, "functions");
+        	}
+        });
+        homeButton.setBounds(31, 84, 213, 70);
+        homeButton.setOpaque(false);
+        menuPanel.add(homeButton);
         menuPanel.add(homeIcon);
         menuPanel.add(lblHome);
         
@@ -131,64 +202,77 @@ public class MainMenu extends JFrame {
         historyIcon.setBounds(51, 283, 37, 45);
         menuPanel.add(historyIcon);
         
-        JLabel lblHome_1_1 = new JLabel("History");
-        lblHome_1_1.setForeground(Color.WHITE);
-        lblHome_1_1.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
-        lblHome_1_1.setBounds(111, 283, 171, 45);
-        menuPanel.add(lblHome_1_1);
+        JLabel lblHistory = new JLabel("History");
+        lblHistory.setForeground(Color.WHITE);
+        lblHistory.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
+        lblHistory.setBounds(111, 283, 171, 45);
+        menuPanel.add(lblHistory);
         
         JLabel settingsIcon = new JLabel("");
         settingsIcon.setIcon(new ImageIcon(MainMenu.class.getResource("/menu/icons/settingsicon.png")));
         settingsIcon.setBounds(51, 383, 50, 45);
         menuPanel.add(settingsIcon);
         
-        JLabel lblHome_1_2 = new JLabel("Settings");
-        lblHome_1_2.setForeground(Color.WHITE);
-        lblHome_1_2.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
-        lblHome_1_2.setBounds(111, 383, 183, 45);
-        menuPanel.add(lblHome_1_2);
+        JLabel lblSettings = new JLabel("Settings");
+        lblSettings.setForeground(Color.WHITE);
+        lblSettings.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
+        lblSettings.setBounds(111, 383, 183, 45);
+        menuPanel.add(lblSettings);
         
         JLabel logoutIcon = new JLabel("");
         logoutIcon.setIcon(new ImageIcon(MainMenu.class.getResource("/menu/icons/Group.png")));
         logoutIcon.setBounds(51, 484, 37, 45);
         menuPanel.add(logoutIcon);
         
-        JLabel lblHome_1_3 = new JLabel("Log out");
-        lblHome_1_3.setForeground(Color.WHITE);
-        lblHome_1_3.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
-        lblHome_1_3.setBounds(111, 484, 133, 45);
-        menuPanel.add(lblHome_1_3);
-        
-        JButton btnHome = new JButton("");
-        btnHome.setBounds(0, 79, 350, 70);
-        btnHome.setOpaque(false);
-        btnHome.setBorder(null);
-        menuPanel.add(btnHome);
-        
-        JButton btnHome_1 = new JButton(" ");
-        btnHome_1.setOpaque(false);
-        btnHome_1.setBorder(null);
-        btnHome_1.setBounds(0, 174, 350, 70);
-        menuPanel.add(btnHome_1);
-        
-        JButton btnHome_2 = new JButton("");
-        btnHome_2.setOpaque(false);
-        btnHome_2.setBorder(null);
-        btnHome_2.setBounds(0, 270, 350, 70);
-        menuPanel.add(btnHome_2);
-        
-        JButton btnHome_3 = new JButton("");
-        btnHome_3.setOpaque(false);
-        btnHome_3.setBorder(null);
-        btnHome_3.setBounds(0, 373, 350, 70);
-        menuPanel.add(btnHome_3);
-        
-        JButton btnHome_4 = new JButton("");
-        btnHome_4.setOpaque(false);
-        btnHome_4.setBorder(null);
-        btnHome_4.setBounds(0, 470, 350, 70);
-        menuPanel.add(btnHome_4);
+        JLabel lblLogout = new JLabel("Log out");
+        lblLogout.setForeground(Color.WHITE);
+        lblLogout.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 30));
+        lblLogout.setBounds(111, 484, 133, 45);
+        menuPanel.add(lblLogout);
         getContentPane().add(pages);
-        getContentPane().add(header);
+        
+        JPanel summary = new JPanel();
+        pages.add(summary, "summary");
+        summary.setLayout(null);
+        
+        JLabel titleSummary = new JLabel();
+        titleSummary.setBounds(75, 5, 456, 177);
+        titleSummary.setText("Summary");
+        titleSummary.setForeground(new Color(201, 149, 162));
+        titleSummary.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        summary.add(titleSummary);
+        
+        JPanel settings = new JPanel();
+        pages.add(settings, "settings");
+        settings.setLayout(null);
+        
+        JLabel titleSettings = new JLabel();
+        titleSettings.setBounds(75, 5, 456, 177);
+        titleSettings.setText("Settings");
+        titleSettings.setForeground(new Color(201, 149, 162));
+        titleSettings.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        settings.add(titleSettings);
+        
+        JPanel history = new JPanel();
+        pages.add(history, "history");
+        history.setLayout(null);
+        
+        JLabel titleHistory = new JLabel();
+        titleHistory.setBounds(75, 5, 456, 177);
+        titleHistory.setText("History");
+        titleHistory.setForeground(new Color(201, 149, 162));
+        titleHistory.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        history.add(titleHistory);
+        
+        JPanel deposits = new JPanel();
+        pages.add(deposits, "deposits");
+        deposits.setLayout(null);
+        
+        JLabel titleDeposits = new JLabel();
+        titleDeposits.setBounds(75, 5, 270, 177);
+        titleDeposits.setText("Deposits");
+        titleDeposits.setForeground(new Color(201, 149, 162));
+        titleDeposits.setFont(new Font("Moulpali", Font.PLAIN, 80));
+        deposits.add(titleDeposits);
 	}
 }
